@@ -7,6 +7,8 @@
     <title>Unique page title - My Site</title>
 
     <link rel="stylesheet" href="chess.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     <meta name="description" content="Page description">
     <meta property="og:title" content="Unique page title - My Site">
@@ -24,6 +26,8 @@
 
 <body>
 <!-- Content -->
+    <div class="section">
+    <p style="text-align: center">Cliquez sur un élément pour voir le détail</p>
     <div class="chess-board">
         <div class="chess-square odd-bg rook-black"><img src="assets/Chess_rdt45.svg" alt="rook"></div>
         <div class="chess-square knight-black"><img src="assets/Chess_ndt45.svg" alt="knight"></div>
@@ -90,11 +94,321 @@
         <div class="chess-square knight-white"><img src="assets/Chess_nlt45.svg" alt="knight"></div>
         <div class="chess-square odd-bg rook-white"><img src="assets/Chess_rlt45.svg" alt="rook"></div>
     </div>
-
-    <div id="detail">
-        <p>Lorem</p>
+        <br>
+        <div class="superviseur">
+            <button id="superviseurBtn">👀 Superviseur</button>
+        </div>
     </div>
 
+    <div class="section utilisation">
+        <video autoplay muted loop id="vid">
+            <source src="assets/ptp.gif.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <script>
+            document.getElementById('vid').play();
+        </script>
+        <h1>Utilisation du logiciel</h1>
+
+        Prérequis :
+        Pour pouvoir jouer au jeu, il faut avoir une machine équipée d’une version récente de python 3, ainsi qu’avoir le projet avec les fichiers source du jeu.<br><br>
+
+        Le projet est composé de 3 fichiers :<br>
+        - <b>chessgame.py</b><br>
+        - <b>chesscore.py</b><br>
+        - <b>chessinit.py</b><br><br>
+
+        Le fichier <b>chessgame.py</b> comporte le programme principal du jeu, qui se compose d'une boucle de while qui est lancée en début de partie, où on y vérifie les conditions de passage de tour.<br>
+        On y enregistre également les inputs de l'utilisateur.<br><br>
+
+        Le fichier <b>chesscore.py</b> comporte toutes les classes, les propriétés et les méthodes de chaque pièce du jeu ainsi que les différentes règles.<br><br>
+
+        le fichier <b>chessinit.py</b> comporte l'initialisation de chaque pièce du jeu, c'est à dire leur placement et leur couleur. Il initialise également le plateau de jeu.<br><br>
+
+        Pour démarrer le programme, il faut exécuter le script python chessgame.py à la racine du projet avec la commande suivante:<br>
+        python3 <b>chessgame.py</b><br><br>
+
+        Les règles du jeu sont celles du jeu d'échec<br><br>
+
+        Pour déplacer une pièce du jeu, il faut sélectionner les coordonnées de la pièce en question, faire entrer, puis sélectionner les coordonnées de case vers laquelle on veut la déplacer.<br>
+        Si les coordonnées de sélection ou de destination sont invalides, ou alors que le déplacement transgresse une règle du jeu, un message d'alerte est alors affiché pour préciser la raison de l'erreur.<br><br>
+
+        Toute information importante comme l'échec au rois, ou la fin d'une partie est signalée au joueur par un message.<br><br>
+        <a href="https://github.com/Yanuka/PTP" target="_blank">-> Lien vers le repository Github</a><br><br>
+    </div>
+
+    <div id="rook-white" class="detail">
+        <img src="assets/Chess_rlt45.svg" alt="rook" width="70" height="70">
+        <h1>Tour Blanche</h1>
+        <h3 class="classe">Rook(Piece)</h3>
+        <p>La tour est une surcharge de la classe Piece. Elle se déplace en ligne sur autant de cases qu’elle veut. Si elle se déplace sur une pièce adverse, elle la mange.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur de la tour. Afin d’initialiser la tour, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+            </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="knight-white" class="detail">
+        <img src="assets/Chess_nlt45.svg" alt="knight" width="70" height="70">
+        <h1>Cavalier Blanc</h1>
+        <h3 class="classe">Knight(Piece)</h3>
+        <p>Le cavalier se déplace en L, c’est-à-dire 2 cases dans une direction puis 1 case de manière perpendiculaire.
+            C’est la seule pièce qui peut se déplacer au-dessus des autres. S’il se déplace sur une pièce adverse, il la mange.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du cavalier. Afin d’initialiser le cavalier, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables
+            (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="bishop-white" class="detail">
+        <img src="assets/Chess_blt45.svg" alt="bishop" width="70" height="70">
+        <h1>Fou Blanc</h1>
+        <h3 class="classe">Bishop(Piece)</h3>
+        <p>Le fou peut se déplacer en diagonale d’autant de cases qu’il veut. S’il se déplace sur une pièce adverse, il la mange.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du fou. Afin d’initialiser le cavalier, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="king-white" class="detail">
+        <img src="assets/Chess_klt45.svg" alt="king" width="70" height="70">
+        <h1>Roi Blanc</h1>
+        <h3 class="classe">King(Piece)</h3>
+        <p>Le roi peut se déplacer d’une case dans toutes les directions incluant les diagonales. Il ne peut être en position d’être mangée par une pièce adverse : on appelle cela un échec. Si le roi ne peut pas sortir d’un échec, alors la partie est remportée par l’adversaire. Il est impossible de se mettre en échec tout seul. Si le joueur n’a aucun déplacement possible et qu’il n’est pas en échec, alors on appelle cela un pat : c’est la fin de la partie, aucun joueur n’a gagné.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du roi. Afin d’initialiser le roi, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="queen-white" class="detail">
+        <img src="assets/Chess_qlt45.svg" alt="queen" width="70" height="70">
+        <h1>Reine Blanche</h1>
+        <h3 class="classe">Queen(Piece)</h3>
+        <p>La dame peut se déplacer d’autant de case qu’elle veut en diagonale ou en ligne. Elle mange les pièces adverses si elle se déplace dessus.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur de la reine. Afin d’initialiser la reine, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="pawn-white" class="detail">
+        <img src="assets/Chess_plt45.svg" alt="pawn" width="70" height="70">
+        <h1>Pion Blanc</h1>
+        <h3 class="classe">Pawn(Piece)</h3>
+        <p>Pawn est une classe instanciable pour chaque pion. Les pions sont des pièces qui se déplacent d’une case vers l’avant (elles peuvent avancer de 2 cases si elles sont encore à leur position initiale). Elle peuvent manger les pièces adverses en diagonales avant. Si ils atteignent le coté opposé du plateau, ils peuvent se transformer en n’importe quelle pièce d’un jeu d’échec.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du pion. Afin d’initialiser le pion, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="rook-black" class="detail">
+        <img src="assets/Chess_rdt45.svg" alt="rook" width="70" height="70">
+        <h1>Tour Noire</h1>
+        <h3 class="classe">Rook(Piece)</h3>
+        <p>La tour est une surcharge de la classe Piece. Elle se déplace en ligne sur autant de cases qu’elle veut. Si elle se déplace sur une pièce adverse, elle la mange.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur de la tour. Afin d’initialiser la tour, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="knight-black" class="detail">
+        <img src="assets/Chess_ndt45.svg" alt="knight" width="70" height="70">
+        <h1>Cavalier Noir</h1>
+        <h3 class="classe">Knight(Piece)</h3>
+        <p>Le cavalier se déplace en L, c’est-à-dire 2 cases dans une direction puis 1 case de manière perpendiculaire. C’est la seule pièce qui peut se déplacer au-dessus des autres. S’il se déplace sur une pièce adverse, il la mange.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du cavalier. Afin d’initialiser le cavalier, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="bishop-black" class="detail">
+        <img src="assets/Chess_bdt45.svg" alt="bishop" width="70" height="70">
+        <h1>Fou Noir</h1>
+        <h3 class="classe">Bishop(Piece)</h3>
+        <p>Le fou peut se déplacer en diagonale d’autant de cases qu’il veut. S’il se déplace sur une pièce adverse, il la mange.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du fou. Afin d’initialiser le cavalier, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="king-black" class="detail">
+        <img src="assets/Chess_kdt45.svg" alt="king" width="70" height="70">
+        <h1>Roi Noir</h1>
+        <h3 class="classe">King(Piece)</h3>
+        <p>Le roi peut se déplacer d’une case dans toutes les directions incluant les diagonales. Il ne peut être en position d’être mangée par une pièce adverse : on appelle cela un échec. Si le roi ne peut pas sortir d’un échec, alors la partie est remportée par l’adversaire. Il est impossible de se mettre en échec tout seul. Si le joueur n’a aucun déplacement possible et qu’il n’est pas en échec, alors on appelle cela un pat : c’est la fin de la partie, aucun joueur n’a gagné.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du roi. Afin d’initialiser le roi, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="queen-black" class="detail">
+        <img src="assets/Chess_qdt45.svg" alt="queen" width="70" height="70">
+        <h1>Reine Noire</h1>
+        <h3 class="classe">Queen(Piece)</h3>
+        <p>La dame peut se déplacer d’autant de case qu’elle veut en diagonale ou en ligne. Elle mange les pièces adverses si elle se déplace dessus.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur de la reine. Afin d’initialiser la reine, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="pawn-black" class="detail">
+        <img src="assets/Chess_pdt45.svg" alt="pawn" width="70" height="70">
+        <h1>Pion Noir</h1>
+        <h3 class="classe">Pawn(Piece)</h3>
+        <p>Pawn est une classe instanciable pour chaque pion. Les pions sont des pièces qui se déplacent d’une case vers l’avant (elles peuvent avancer de 2 cases si elles sont encore à leur position initiale). Elle peuvent manger les pièces adverses en diagonales avant. Si ils atteignent le coté opposé du plateau, ils peuvent se transformer en n’importe quelle pièce d’un jeu d’échec.</p>
+        <h3 class="function">__init__(color)</h3>
+        <p>C’est le constructeur du pion. Afin d’initialiser le pion, il faut lui dire si la pièce est blanche (« White ») ou noire (« Black »).</p>
+        <h3 class="function">moveList(currentCoordX, currentCoordY, boardName)</h3>
+        <p><span class="variable">CurrentCoordX</span> & <span class="variable">CurrentCoordY</span> : les coordonnées actuelles de la pièce sur le plateau
+            <span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            Cette fonction retourne la liste des cases possibles sur lesquelles la pièce peut se déplacer
+            (<span class="variable">availableMoves</span>), ainsi qu’un tableau répertoriant les coordonnées des cases des pièces ennemies capturables (<span class="variable">capturePossible</span>).
+        </p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="board" class="detail">
+        <img src="assets/board.png" alt="board" width="70" height="70">
+        <h1>Échiquier</h1>
+        <h3 class="classe">Board()</h3>
+        <p>Classe pour le plateau de jeu. Elle permet de gérer les interactions des pièces avec le plateau, et l’affichage de la partie.</p>
+        <h3 class="function">__init__()</h3>
+        <p>C’est le constructeur du plateau. Sert a créer un nouveau tableau à vide.</p>
+        <h3 class="function">Draw()</h3>
+        <p>Permet de dessiner le tableau dans l’invite de commande. Si des pièces sont présentes dans le tableau <span class="variable">displayBoard</span>, affiche aussi les pièces.</p>
+        <h3 class="function">Fetch()</h3>
+        <p>Met à jour le tableau <span class="variable">displayBoard</span> avec les positions des différentes pièces.</p>
+        <h3 class="function">Update()</h3>
+        <p>Met a jour l’affichage du tableau, en effaçant la console, puis en appelant les fonctions Fetch() puis Draw().</p>
+        <h3 class="function">getPlayerColor(selectedPieceX, selectedPieceY, playerColor)</h3>
+        <p><span class="variable">selectedPieceX</span> & <span class="variable">selectedPieceY</span> : les coordonnées sur le plateau de la pièce que le joueur essaye de déplacer</p>
+        <h3 class="function">isSquareEmpty(selectedPieceX, selectedPieceY)</h3>
+        <p><span class="variable">selectedPieceX</span> & <span class="variable">selectedPieceY</span> : les coordonnées sur le plateau de la pièce que le joueur essaye de déplacer. La fonction vérifie si le joueur a bien sélectionné une pièce a jouer et non une case vide</p>
+        <h3 class="function">isMoveListEmpty(selectedPieceX, selectedPieceY, boardName)</h3>
+        <p><span class="variable">selectedPieceX</span> & <span class="variable">selectedPieceY</span> : les coordonnées sur le plateau de la pièce que le joueur essaye de déplacer. La fonction vérifie si le joueur a bien sélectionné une pièce a jouer et non une case vide</p>
+        <p><span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            La fonction vérifie que la pièce que le joueur essaye de déplacer a des déplacements possibles</p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
+    <div id="superviseur" class="detail">
+        <span style="font-size: 44px">👀</span>
+        <h1>Superviseur</h1>
+        <h3 class="classe">Supervisor()</h3>
+        <p>Cette classe a pour but de surveiller des phases et évènements importants d’une partie d’échecs.</p>
+        <h3 class="function">capturePiece(destinationCoordX, destinationCoordY, boardName)</h3>
+        <p><span class="variable">destinationCoordX</span> & <span class="variable">destinationCoordY</span> : Les coordonnées de destination de la pièce.</p>
+        <p><span class="variable">boardName</span> : objet de type plateau, afin de savoir sur quel plateau se situe la pièce
+            La fonction vérifie que la pièce que le joueur essaye de déplacer a des déplacements possibles</p>
+        <br>
+        <br>
+        <a href="index.html">Fermer</a>
+        <br>
+        <br>
+    </div>
     <script src="chess.js"></script>
 </body>
 </html>

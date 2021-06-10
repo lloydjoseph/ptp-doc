@@ -1,5 +1,10 @@
+* {
+    font-family: 'Space Mono', monospace;
+}
+
 html, body {
     margin: 0;
+    padding: 0;
 }
 
 :root {
@@ -18,7 +23,7 @@ body {
     display: grid;
     grid-template-columns: var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size);
     grid-template-rows:  var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size);
-    border: 1px solid grey;
+    border: 1px solid #ececec;
     width: fit-content;
 }
 
@@ -38,6 +43,75 @@ body {
     background: lightblue;
 }
 
-#detail {
+.detail {
     display: none;
+    position: absolute;
+    height: 100vh;
+    padding: 0 2rem;
+    background: white;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.classe {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: indianred;
+    border-radius: 4px;
+}
+
+.function {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: lightblue;
+    border-radius: 4px;
+}
+
+.variable {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: darkseagreen;
+    border-radius: 4px;
+}
+
+.section {
+    padding: 0 4rem;
+}
+
+.utilisation {
+    height: 100vh;
+    overflow: scroll;
+    border-left: 1px solid #ececec;
+}
+
+#vid {
+    margin-top: 2rem;
+}
+
+.superviseur {
+    display: flex;
+    justify-content: center;
+}
+
+.superviseur button {
+    cursor: pointer;
+}
+
+#superviseurBtn {
+    background: #ffdada;
+    border-radius: 4px;
+    border: 2px solid #ff8585;
+    transition: all 0.2s ease-in-out;
+    padding: 0.5rem 1rem;
+}
+
+#superviseurBtn:hover {
+    background: #ff8585;
 }
