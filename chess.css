@@ -1,0 +1,43 @@
+html, body {
+    margin: 0;
+}
+
+:root {
+    --square-size: 64px;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.chess-board {
+    display: grid;
+    grid-template-columns: var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size);
+    grid-template-rows:  var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size) var(--square-size);
+    border: 1px solid grey;
+    width: fit-content;
+}
+
+.chess-square {
+    display: flex;
+    height: var(--square-size);
+    width: var(--square-size);
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.chess-square:hover {
+    background: #6fadbf;
+}
+
+.odd-bg {
+    background: lightblue;
+}
+
+#detail {
+    display: none;
+}
